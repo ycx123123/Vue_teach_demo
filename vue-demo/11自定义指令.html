@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue中自定义指令</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body{
+            height: 100%;
+            font-family: 'Microsoft YaHei';
+        }
+
+        .test{
+            width: 100px;
+            height: 100px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div class="vue">
+         <div v-red class="test"></div>   
+    </div>
+</body>
+</html>
+<script>
+    Vue.directive('red', function(dom){
+        dom.style.background = "red";
+    });
+
+    new Vue({
+        el: '.vue'
+    });      
+</script>

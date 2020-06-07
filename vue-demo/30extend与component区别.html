@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Vue的extend与component区别</title>
+    <script src="https://unpkg.com/vue"></script>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+
+        html, body{
+            height: 100%;
+            font-family: 'Microsoft YaHei';
+        }
+    </style>
+</head>
+<body>
+    <div class="vue">
+         <tem></tem>
+         <test></test>
+    </div>
+</body>
+</html>
+<script>
+    // extend 可以注册全局组件供component和components使用
+    var ext = Vue.extend({
+        template: '<h1>通过extend注册的全局组件！</h1>'
+    })
+
+    Vue.component('tem', ext)
+
+    // 默认情况父子组件无法共享数据
+    new Vue({
+        el: '.vue',
+        components: {
+            test: ext
+        }
+    });      
+</script>
